@@ -3,11 +3,11 @@ package config;
 public class Constants {
 	
 	//System Variables
-	public static final String URL = "http://www.store.demoqa.com";
-	public static final String Path_TestData = "C://Users//chaseday//keywordDrivenExample//Hybrid Keyword Driven//src//dataEngine//DataEngine.xlsx";
-	public static final String Path_OR = "C://Users//chaseday//keywordDrivenExample//Hybrid Keyword Driven//src//config//OR.txt";
-	public static final String Path_IE = "C://Users//chaseday//Documents//IEDriverServer//IEDriverServer.exe";
-	public static final String Path_Chrome = "C:/Users/chaseday/Documents/chromedriver/chromedriver.exe";
+	public static final String URL = "http://radioapp.softwaystaging.com/";
+	public static final String Path_TestData = "C://Users//chaseday//Desktop//chaseSelFramework//Hybrid Keyword Driven//src//dataEngine//DataEngine.xlsx";
+	public static final String Path_OR = "C://Users//chaseday//Desktop//chaseSelFramework//Hybrid Keyword Driven//src//config//OR.txt";
+	public static final String Path_IE = "//drivers//IEDriverServer.exe"; //full path is created in ActionKeywords.java, does not need to be changed
+	public static final String Path_Chrome = "//drivers//chromedriver.exe"; //full path is created in ActionKeywords.java, does not need to be changed
 	public static final String File_TestData = "DataEngine.xlsx";
 	public static final String KEYWORD_FAIL = "FAIL";
 	public static final String KEYWORD_PASS = "PASS";
@@ -27,8 +27,8 @@ public class Constants {
 	public static final String Sheet_TestCases = "Test Cases";
 	
 	// Test Data ---unnecessary?
-	public static final String UserName = "testuser_3";
-	public static final String Password = "Test@123";
+	public static final String UserName = "softway";
+	public static final String Password = "password";
 
 
 	

@@ -1,5 +1,6 @@
 package config;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import static executionEngine.DriverScript.OR;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Assert;
 
 import config.Constants;
 import executionEngine.DriverScript;
@@ -27,12 +29,14 @@ public class ActionKeywords {
 				Log.info("Mozilla browser started");				
 				}
 			else if(data.equals("IE")){
-				System.setProperty("webdriver.ie.driver",Constants.Path_IE);
+				File file = new File(System.getProperty("user.dir") + Constants.Path_IE);
+				System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
 				driver=new InternetExplorerDriver();
 				Log.info("IE browser started");
 				}
 			else if(data.equals("Chrome")){
-				System.setProperty("webdriver.chrome.driver",Constants.Path_Chrome);
+				File file = new File(System.getProperty("user.dir") + Constants.Path_Chrome);
+				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 				driver=new ChromeDriver();
 				Log.info("Chrome browser started");
 				}
@@ -58,7 +62,7 @@ public class ActionKeywords {
 	
 	public static void click(String object, String data){
 		try{
-			Log.info("Clicking on Webelement "+ object);
+			Log.info("Clicking on web element "+ object);
 			driver.findElement(getLocator(OR.getProperty(object))).click();
 		 }catch(Exception e){
  			Log.error("Not able to click --- " + e.getMessage());
@@ -69,12 +73,26 @@ public class ActionKeywords {
 	public static void input(String object, String data){
 		try{
 			Log.info("Entering the text in " + object);
+			driver.findElement(getLocator(OR.getProperty(object))).clear();
 			driver.findElement(getLocator(OR.getProperty(object))).sendKeys(data);
 		 }catch(Exception e){
 			 Log.error("Not able to Enter Data --- " + e.getMessage());
 			 DriverScript.bResult = false;
 		 	}
 		}
+	
+	public static void verify(String object, String data){
+		try{
+			Log.info("Verifying the object " + object + " contains the text " + data);
+			Assert.assertEquals(driver.findElement(getLocator(OR.getProperty(object))).getText(),data);
+		}catch(AssertionError e){
+			Log.error("Unable to verify text --- " + e.getMessage());
+			DriverScript.bResult = false;
+		}catch(Exception e){
+			Log.error("Unable to verify text --- " + e.getMessage());
+			DriverScript.bResult = false;
+		}
+	}
 	
 
 	public static void waitFor(String object, String data) throws Exception{

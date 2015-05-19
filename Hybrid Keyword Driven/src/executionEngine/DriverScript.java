@@ -33,6 +33,7 @@ public class DriverScript {
 	}
 	
     public static void main(String[] args) throws Exception {
+    	System.out.println("started");
     	ExcelUtils.setExcelFile(Constants.Path_TestData);
     	DOMConfigurator.configure("log4j.xml");
     	String Path_OR = Constants.Path_OR;
@@ -47,6 +48,7 @@ public class DriverScript {
 		
     private void execute_TestCase() throws Exception {
 	    	int iTotalTestCases = ExcelUtils.getRowCount(Constants.Sheet_TestCases);
+	    	outerloop:
 			for(int iTestcase=1;iTestcase<iTotalTestCases;iTestcase++){
 				bResult = true;
 				sTestCaseID = ExcelUtils.getCellData(iTestcase, Constants.Col_TestCaseID, Constants.Sheet_TestCases); 
@@ -64,7 +66,9 @@ public class DriverScript {
 						if(bResult==false){
 							ExcelUtils.setCellData(Constants.KEYWORD_FAIL,iTestcase,Constants.Col_Result,Constants.Sheet_TestCases);
 							Log.endTestCase(sTestCaseID);
-							break;
+							System.out.println("failed");
+							//breaking the outerloop will end the entire test suite
+							break outerloop;
 							}						
 						}
 					if(bResult==true){
@@ -73,6 +77,7 @@ public class DriverScript {
 						}					
 					}
 				}
+			System.out.println("completed");
     		}	
      
      private static void execute_Actions() throws Exception {

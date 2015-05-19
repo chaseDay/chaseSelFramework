@@ -1,9 +1,30 @@
-# Home Page Objects
-btn_MyAccount=xpath:.//*[@id='account']/a
-btn_LogOut=xpath:.//*[@id='account_logout']/a
+# Log In Page Objects
 
+txtbx_username=id:user_username
+txtbx_password=id:user_password
+btn_login=name:commit
 
-# Login Page Object
-txtbx_UserName=xxpath:.//*[@id='log']
-txtbx_Password=xpath:.//*[@id='pwd']
-btn_LogIn=xpath:.//*[@id='login']
+# Dashboard Navigation Objects
+
+btn_dashboard=xpath://ul[@id='side-menu']/li[2]/a/span
+btn_appSettings=xpath://ul[@id='side-menu']/li[3]/a/span
+	btn_appSettings_appUIComponents=link:App UI Components
+	btn_appSettings_menuItems=link:Menu Items
+	btn_appSettings_textOptions=link:Text Options
+	btn_appSettings_editPreferences=link:Edit Preferences
+	btn_appSettings_editVoiceEmails=link:Edit Voice Emails
+	btn_appSettings_
+btn_streams=xpath://ul[@id='side-menu']/li[4]/a/span
+btn_rotatingImages=xpath://ul[@id='side-menu']/li[5]/a/span
+btn_events=xpath://ul[@id='side-menu']/li[6]/a/span
+
+# App Settings - Text Options
+
+txtbx_upperText=id:station_app_preferences_attributes_0_value
+txtbx_lowerText=id:station_app_preferences_attributes_1_value
+btn_saveTextOptions=name:commit
+txt_upperText=xpath://div[@id='tab-1']/div[2]/div/div[2]/div/div[2]/p
+txt_lowerText=xpath://div[@id='tab-1']/div[2]/div/div[2]/div/div[2]/p[2]
+btn_scrollingText=link:Scrolling text
+txtbx_scrollingText=id:station_app_preferences_attributes_2_value
+txt_scrollingText=xpath://div[2]/div[2]/div/div[2]/div/div[2]/p
