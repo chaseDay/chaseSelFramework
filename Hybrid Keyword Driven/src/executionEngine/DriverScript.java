@@ -67,7 +67,7 @@ public class DriverScript {
 							ExcelUtils.setCellData(Constants.KEYWORD_FAIL,iTestcase,Constants.Col_Result,Constants.Sheet_TestCases);
 							Log.endTestCase(sTestCaseID);
 							System.out.println("failed");
-							//breaking the outerloop will end the entire test suite
+							//breaking the outerloop will end the entire test suite!
 							break outerloop;
 							}						
 						}
